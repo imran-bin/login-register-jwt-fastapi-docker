@@ -3,5 +3,9 @@ pydantic
 sqlalchemy
 python-magic
 passlib[bcrypt]
-python-jose
+bcrypt==3.2.2
+python-jose[cryptography]
 uvicorn
+alembic 
+pymysql 
+

@@ -1,7 +1,7 @@
-from sqlalchemy.orm import SessionLocal
-from models.user import User
-from core.security import SecurityService
-
+from app.core.database import SessionLocal
+from app.models.user import User
+from app.core.security import SecurityService
+from sqlalchemy.orm import Session 
 class UserService:
     def __init__(self,db:Session):
         self.db= db 

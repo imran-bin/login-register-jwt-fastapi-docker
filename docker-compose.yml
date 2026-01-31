@@ -1,8 +1,26 @@
+version: "3.9"
 services:
   app:
     build: .
+    environment:
+      - DATABASE_URL=mysql+pymysql://root@host.docker.internal:3306/fast_api_login_reg
+      - SECRET_KEY=supersecretkey
+    depends_on:
+      - db
     ports:
       - "8000:8000"
+    restart: on-failure
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: fast_api_login_reg
+      MYSQL_ROOT_PASSWORD: ""
+    ports:
+      - "3307:3306"
     volumes:
-      - .:/app
-  
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
